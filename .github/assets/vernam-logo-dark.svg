@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 906.53 100.00" width="906.53" height="100.00">
+  <title>VERNAM logo, dark backgrounds</title>
+  <g>
+    <g transform="scale(4.16667)">
+    <rect x="0.5" y="0.5" width="6.6" height="6.6" rx="0.9" fill="#3498db"/>
+    <rect x="8.7" y="0.5" width="6.6" height="6.6" rx="0.9" fill="#3498db4d"/>
+    <rect x="16.9" y="0.5" width="6.6" height="6.6" rx="0.9" fill="#3498db"/>
+    <rect x="0.5" y="8.7" width="6.6" height="6.6" rx="0.9" fill="#3498db4d"/>
+    <rect x="8.7" y="8.7" width="6.6" height="6.6" rx="0.9" fill="#3498db"/>
+    <rect x="16.9" y="8.7" width="6.6" height="6.6" rx="0.9" fill="#3498db4d"/>
+    <rect x="0.5" y="16.9" width="6.6" height="6.6" rx="0.9" fill="#3498db"/>
+    <rect x="8.7" y="16.9" width="6.6" height="6.6" rx="0.9" fill="#3498db4d"/>
+    <rect x="16.9" y="16.9" width="6.6" height="6.6" rx="0.9" fill="#3498db"/>
+    </g>
+    <g fill="#ffffff" transform="translate(126.000,100.000) scale(0.048828,-0.048828)">
+    <path transform="translate(0.0,0)" d="M620 2048 1078 548H1095L1553 2048H2107L1416 0H757L66 2048Z"/>
+    <path transform="translate(2792.5,0)" d="M155 0V2048H1583V1646H650V1226H1510V823H650V402H1583V0Z"/>
+    <path transform="translate(5150.0,0)" d="M155 0V2048H1001Q1231 2048 1398.5 1965.5Q1566 1883 1657.0 1729.5Q1748 1576 1748 1366Q1748 1153 1655.0 1004.5Q1562 856 1391.0 778.5Q1220 701 986 701H451V1091H894Q1006 1091 1081.5 1120.5Q1157 1150 1196.0 1210.5Q1235 1271 1235 1366Q1235 1461 1196.0 1523.5Q1157 1586 1081.0 1617.5Q1005 1649 894 1649H650V0ZM1308 936 1818 0H1278L778 936Z"/>
+    <path transform="translate(7633.6,0)" d="M1898 2048V0H1478L663 1182H650V0H155V2048H581L1387 868H1404V2048Z"/>
+    <path transform="translate(10306.1,0)" d="M598 0H66L757 2048H1416L2107 0H1575L1094 1532H1078ZM527 806H1639V430H527Z"/>
+    <path transform="translate(13098.6,0)" d="M155 2048H768L1288 780H1312L1832 2048H2445V0H1963V1258H1946L1454 13H1146L654 1265H637V0H155Z"/>
+    </g>
+  </g>
+</svg>
