@@ -108,25 +108,25 @@ hand:
 | File | What it is |
 |------|------------|
 | `index.html` | The page: hero, the tool card, and the marketing sections. |
-| `card.css` | Styles for the tool card. |
-| `vernam-ui.js` | Wiring for the tool card (drives the engine). |
-| `vernam.js` | The crypto engine. Exposes `window.Vernam`. |
-| `wordlist.js` | BIP-0039 English wordlist for the passphrase generator. |
-| `vendor/sodium.js` | Vendored libsodium (ISC). No CDN, works offline. |
+| `assets/css/card.css` | Styles for the tool card. |
+| `assets/js/vernam-ui.js` | Wiring for the tool card (drives the engine). |
+| `assets/js/vernam.js` | The crypto engine. Exposes `window.Vernam`. |
+| `assets/js/wordlist.js` | BIP-0039 English wordlist for the passphrase generator. |
+| `assets/vendor/sodium.js` | Vendored libsodium (ISC). No CDN, works offline. |
 | `FORMAT.md` | The `.vrn` file format spec. |
 | `LICENSE` | The VERNAM License (see above). |
 | `THIRD-PARTY-LICENSES.txt` | Notices for the bundled components. |
 
-> The tool card (`index.html`'s card markup, `card.css`, `vernam-ui.js`) and the engine
-> (`vernam.js`) are generated from the canonical PrivacyTools.io source, so this copy
+> The tool card (`index.html`'s card markup, `assets/css/card.css`, `assets/js/vernam-ui.js`) and the engine
+> (`assets/js/vernam.js`) are generated from the canonical PrivacyTools.io source, so this copy
 > always matches the live tool at privacytools.io/encrypt.
 
 ### Using the engine on its own
 
 ```html
-<script src="vendor/sodium.js"></script>
-<script src="wordlist.js"></script>
-<script src="vernam.js"></script>
+<script src="assets/vendor/sodium.js"></script>
+<script src="assets/js/wordlist.js"></script>
+<script src="assets/js/vernam.js"></script>
 <script>
   await Vernam.ready();
   // encryptFile / decryptFile take a File and a passphrase

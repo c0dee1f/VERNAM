@@ -19,13 +19,13 @@
   Cache-Control: public, max-age=0, must-revalidate
 
 # Static, security-relevant scripts are unhashed: revalidate daily
-/vernam.js
+/assets/js/vernam.js
   Cache-Control: public, max-age=86400
-/vernam-ui.js
+/assets/js/vernam-ui.js
   Cache-Control: public, max-age=86400
-/wordlist.js
+/assets/js/wordlist.js
   Cache-Control: public, max-age=86400
-/vendor/sodium.js
+/assets/vendor/sodium.js
   Cache-Control: public, max-age=86400
 
 # Icons / images change rarely: cache a week
@@ -33,17 +33,9 @@
   Cache-Control: public, max-age=604800
 /favicon.svg
   Cache-Control: public, max-age=604800
-/apple-touch-icon.png
+/assets/icons/*
   Cache-Control: public, max-age=604800
-/icon-192.png
-  Cache-Control: public, max-age=604800
-/icon-512.png
-  Cache-Control: public, max-age=604800
-/icon-512-maskable.png
-  Cache-Control: public, max-age=604800
-/icon-180.png
-  Cache-Control: public, max-age=604800
-/og.png
+/assets/og.png
   Cache-Control: public, max-age=604800
 /splash/*
   Cache-Control: public, max-age=604800
