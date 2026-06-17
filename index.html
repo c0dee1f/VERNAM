@@ -45,6 +45,7 @@
   }
   .theme-toggle:hover{ border-color:var(--accent) }
   .theme-toggle svg{ width:15px; height:15px; flex:0 0 auto }
+  .theme-toggle #theme-icon{ display:inline-flex; align-items:center }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{
@@ -71,9 +72,12 @@
 
   /* pills + trust line */
   .pills{display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:40px 0 0}
-  .pill{display:inline-flex; align-items:center; gap:8px; border:1px solid var(--line); background:var(--surface); border-radius:999px; padding:8px 14px; font-size:13.5px; font-weight:600}
+  .pill{display:inline-flex; align-items:center; gap:8px; border:1px solid var(--line); background:var(--surface); border-radius:999px; padding:8px 14px; font-size:13.5px; font-weight:600; box-shadow:3px 3px 0 var(--accent); transform:translate(-2px,-2px); transition:all .12s ease}
+  .pill:hover{transform:translate(0,0); box-shadow:0 0 0 var(--accent); border-color:var(--accent)}
+  @media(prefers-reduced-motion:reduce){.pill,.pill:hover{transform:none; transition:none}}
   .pill svg{color:var(--good)}
-  .trust{max-width:680px; margin:32px auto 0; text-align:center; color:var(--muted); font-size:16px}
+  .trust{max-width:920px; margin:32px auto 0; text-align:center; color:var(--muted); font-size:16px}
+  @media(min-width:1024px){.trust{white-space:nowrap}}
   .trust b{color:var(--text); font-weight:600}
 
   /* sections */
@@ -344,7 +348,7 @@
       <span class="pill"><svg class="icon" style="width:15px;height:15px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><!--V:pills.4-->Works offline<!--/V--></span>
     </div>
 
-    <p class="trust"><!--V:trust.0-->Built on <b>XChaCha20-Poly1305</b> and <b>Argon2id</b>, the same cryptography trusted to protect billions of people every day.<!--/V--> <!--V:trust.1-->The very same encryption algorithms that secure <b>Signal</b>, <b>WireGuard</b> and <b>1Password</b>.<!--/V--></p>
+    <p class="trust"><!--V:trust.0-->Built on <b>XChaCha20-Poly1305</b> and <b>Argon2id</b>, the same cryptography trusted to protect billions of people every day.<!--/V--><br><!--V:trust.1-->The very same encryption algorithms that secure <b>Signal</b>, <b>WireGuard</b> and <b>1Password</b>.<!--/V--></p>
   </section>
 
   <!-- HOW IT WORKS -->
