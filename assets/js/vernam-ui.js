@@ -55,6 +55,14 @@
     $('pt-go-pre').textContent = enc ? 'Encrypt with' : 'Decrypt with';
     $('pt-strength').classList.toggle('vrn-hidden', !enc);
     $('pt-hi-row').classList.toggle('vrn-hidden', !enc);
+    $('pt-tip').classList.toggle('vrn-hidden', !enc);
+    $('pt-gen').classList.toggle('vrn-hidden', !enc);
+    $('pt-copy').classList.toggle('vrn-hidden', !enc);
+    $('pt-note-enc').classList.toggle('vrn-hidden', !enc);
+    $('pt-note-dec').classList.toggle('vrn-hidden', enc);
+    pass.type = 'password';
+    pass.classList.toggle('vrn-pass-solo', !enc);
+    pass.placeholder = enc ? 'Enter a strong passphrase' : 'Enter the passphrase used to encrypt this file';
     pass.value = ''; refreshStrength();
     show('form');
     setTimeout(function () { pass.focus(); }, 50);

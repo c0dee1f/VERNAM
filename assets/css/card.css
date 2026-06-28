@@ -69,6 +69,7 @@
 .vrn-field input { width: 100%; background: var(--vrn-surface2); border: 1px solid var(--vrn-line); color: var(--vrn-text); border-radius: 10px; padding: 12px 110px 12px 14px; font-size: 15px; outline: none; font-family: inherit; }
 .vrn-field input:focus { border-color: var(--vrn-accent); }
 .vrn-fieldtools { position: absolute; right: 8px; display: flex; gap: 2px; }
+.vrn-field input.vrn-pass-solo { padding-right: 48px; }
 
 /* strength */
 .vrn-strength-track { height: 6px; background: var(--vrn-surface2); border-radius: 999px; overflow: hidden; margin-top: 10px; }

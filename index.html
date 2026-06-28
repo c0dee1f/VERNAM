@@ -390,7 +390,7 @@
     </div>
 
     <div class="vrn-body">
-      <p class="vrn-tip">
+      <p id="pt-tip" class="vrn-tip">
         <svg class="vrn-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.3" fill="currentColor" stroke="none"/><circle cx="16" cy="8" r="1.3" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="8" cy="16" r="1.3" fill="currentColor" stroke="none"/><circle cx="16" cy="16" r="1.3" fill="currentColor" stroke="none"/></svg>
         Recommended: tap the dice to generate a strong passphrase.
       </p>
@@ -415,11 +415,15 @@
         <div class="vrn-strength-track"><i id="pt-mfill" class="vrn-strength-fill"></i></div>
         <div id="pt-mleft" class="vrn-strength-label">Strength: <b>Empty</b></div>
       </div>
-      <p class="vrn-note">
+      <p id="pt-note-enc" class="vrn-note">
         The generator draws six random words from the 2048-word
         <a href="#how">BIP39 wordlist</a>, the same list behind crypto wallet seed phrases.
         That is about 66 bits of entropy: strong enough to shrug off any brute-force attack,
         yet simple to write down or remember.
+      </p>
+      <p id="pt-note-dec" class="vrn-note vrn-hidden">
+        Enter the exact passphrase this file was encrypted with. It is the only key, never
+        stored anywhere, so a wrong passphrase just fails and there is no recovery.
       </p>
 
       <!-- high security (encrypt only) -->
