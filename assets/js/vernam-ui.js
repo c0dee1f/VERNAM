@@ -1,9 +1,8 @@
 /*
- * VERNAM tool UI wiring. SINGLE SOURCE shared by the site (/encrypt) and the
- * standalone repo page (VERNAM.app / GitHub). Drives the shared card markup
- * (card.html) via vrn- classes; the crypto lives in the engine
- * (window.PTEncrypt, aliased window.Vernam in the public repo). Load AFTER
- * sodium.js, wordlist.js, and the engine. No build step, no dependencies.
+ * The VERNAM tool UI, shared by /encrypt and the standalone VERNAM.app page. It drives the shared
+ * card markup through the vrn- classes; the crypto lives in the engine, window.PTEncrypt, aliased
+ * to window.Vernam in the public repo. Load it after sodium.js, wordlist.js and the engine. No
+ * build step, no dependencies.
  */
 (function () {
   var E = window.Vernam || window.PTEncrypt;
@@ -75,19 +74,19 @@
     highSec = false; setSwitch(false); refreshStrength(); show('idle');
   }
 
-  // show / hide
+  // show and hide
   $('pt-eye').addEventListener('click', function () {
     pass.type = pass.type === 'password' ? 'text' : 'password';
   });
 
-  // generate (six BIP39 words, ~66 bits)
+  // generate six BIP39 words, about 66 bits
   $('pt-gen').addEventListener('click', function () {
     pass.value = E.generatePassphrase(6);
     pass.type = 'text';
     refreshStrength();
   });
 
-  // copy passphrase
+  // copy the passphrase
   function attachCopy(btn, input) {
     if (!btn) return;
     var orig = btn.innerHTML;
@@ -112,7 +111,7 @@
   }
   attachCopy($('pt-copy'), pass);
 
-  // strength (entropy score 0..4, no crack-time)
+  // strength, an entropy score of 0 to 4, with no crack-time claim
   pass.addEventListener('input', refreshStrength);
   function refreshStrength() {
     var r = E.strength(pass.value);
@@ -122,7 +121,7 @@
     $('pt-mleft').innerHTML = 'Strength: <b>' + (pass.value ? r.label : 'Empty') + '</b>';
   }
 
-  // high security switch (updates spec chips + caption)
+  // the high-security switch, which updates the spec chips and caption
   var hi = $('pt-hi');
   function setSwitch(on) {
     highSec = on;
@@ -137,11 +136,11 @@
   }
   hi.addEventListener('click', function () { setSwitch(!highSec); });
 
-  // go
+  // run it
   $('pt-go').addEventListener('click', run);
   pass.addEventListener('keydown', function (e) { if (e.key === 'Enter' && mode === 'decrypt') run(); });
 
-  // scramble-decode the button label on hover (respects reduced motion)
+  // Scramble-decode the button label on hover, respecting reduced motion.
   function scrambleHover(btn, spans) {
     spans = (spans || []).filter(Boolean);
     if (!btn || !spans.length) return;

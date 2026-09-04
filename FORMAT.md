@@ -60,6 +60,6 @@ encrypts. That is the whole "which way?" logic.
 ## Interoperability
 
 This format is stable and shared with the encryptor at
-[privacytools.io/encrypt](https://www.privacytools.io/encrypt): a file encrypted
+[privacytools.io/encrypt](https://privacytools.io/encrypt): a file encrypted
 in one opens in the other. Any implementation that follows this document can read
 and write VERNAM files.

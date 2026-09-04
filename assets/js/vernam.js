@@ -4,9 +4,9 @@
  * streaming encryption), via libsodium. Everything runs locally in the browser;
  * nothing is ever uploaded.
  *
- * Made by PrivacyTools.io, https://www.privacytools.io
+ * Made by PrivacyTools.io, https://privacytools.io
  * Licensed under the VERNAM License (see LICENSE): do whatever you like,
- * just keep a visible, linked credit to https://www.privacytools.io on any
+ * just keep a visible, linked credit to https://privacytools.io on any
  * hosted or distributed copy.
  *
  * File format (VRNM):
@@ -31,19 +31,18 @@
   const EXT = '.vrn';
   const CHUNK = 1 << 20; // 1 MiB plaintext per secretstream message
   const HEADER_LEN = 54;
-  // In-memory (Blob) fallback cap when the File System Access API is absent.
+  // The in-memory fallback cap, used where the File System Access API is missing.
   const FALLBACK_MAX = 2 * 1024 * 1024 * 1024; // 2 GiB
 
-  // KDF profiles. memlimit fits in uint32 (1 GiB = 1073741824).
+  // The KDF profiles. memlimit has to fit in a uint32.
   const PROFILES = {
     standard: { opslimit: 3, memlimit: 256 * 1024 * 1024 },
     high: { opslimit: 4, memlimit: 1024 * 1024 * 1024 },
   };
 
-  // Bounds for the KDF cost fields read from a file header on decrypt. They live
-  // outside the AEAD, so a hostile .vrn could request a huge Argon2 cost and
-  // OOM-crash the tab before the auth tag is ever checked. We only ever write
-  // the two PROFILES above, so anything beyond these bounds is rejected.
+  // Bounds for the KDF cost fields read out of a file header on decrypt. They sit outside the
+  // AEAD, so a hostile file could ask for a huge Argon2 cost and crash the tab before the auth tag
+  // is ever checked. Only the two profiles above are ever written, so reject anything past these.
   const MAX_OPSLIMIT = 10;
   const MIN_MEMLIMIT = 8 * 1024 * 1024;     // 8 MiB
   const MAX_MEMLIMIT = 1024 * 1024 * 1024;  // 1 GiB (our highest profile)
@@ -72,8 +71,8 @@
     return true;
   }
 
-  // Pick an output sink. Prefers streaming straight to disk (constant memory);
-  // falls back to buffering a Blob, then a download. Returns {write, close}.
+  // Pick an output sink, preferring a stream straight to disk for constant memory and falling back
+  // to a buffered Blob and a download. Returns {write, close}.
   async function makeSink(suggestedName) {
     if (window.showSaveFilePicker) {
       try {
@@ -87,7 +86,7 @@
         };
       } catch (e) {
         if (e && e.name === 'AbortError') throw e; // user cancelled the save dialog
-        // otherwise fall through to Blob fallback
+        // otherwise fall through to the Blob path
       }
     }
     const parts = [];
@@ -154,7 +153,7 @@
       head.set(init.header, 30);
       await sink.write(head);
 
-      // metadata message (filename + size), encrypted
+      // the encrypted metadata message: filename and size
       const meta = new TextEncoder().encode(JSON.stringify({ n: file.name, s: file.size }));
       let ct = s.crypto_secretstream_xchacha20poly1305_push(state, meta, null, T_MSG);
       await sink.write(u32le(ct.length));
@@ -199,8 +198,8 @@
     const alg = head[5];
     const opslimit = rdU32le(head, 6);
     const memlimit = rdU32le(head, 10);
-    // Validate the (unauthenticated) KDF parameters before deriving the key, so a
-    // crafted file can't pick a rogue algorithm or an absurd memory cost.
+    // Check the KDF parameters, which are unauthenticated, before deriving the key, so a crafted
+    // file cannot pick a rogue algorithm or an absurd memory cost.
     if (alg !== s.crypto_pwhash_ALG_ARGON2ID13) {
       throw new Error('Unsupported file (unknown key-derivation algorithm).');
     }
@@ -219,7 +218,7 @@
     const state = s.crypto_secretstream_xchacha20poly1305_init_pull(sHeader, key);
     const T_FIN = s.crypto_secretstream_xchacha20poly1305_TAG_FINAL;
 
-    // Read the metadata message first (we need the original name to open the sink).
+    // Read the metadata first: the sink needs the original name.
     let pos = HEADER_LEN;
     const total = file.size || 1;
 
@@ -272,9 +271,8 @@
     return name.endsWith(EXT) ? name.slice(0, -EXT.length) : name + '.decrypted';
   }
 
-  // The original filename is recovered from the (authenticated) metadata, but it
-  // was chosen by whoever encrypted the file, so treat it as untrusted when it
-  // becomes a save/download name: keep only the basename, strip control and
+  // The filename comes out of the authenticated metadata, but whoever encrypted the file chose it,
+  // so treat it as untrusted once it becomes a save name: keep the basename only, strip control and
   // bidi-override characters, drop leading dots, and cap the length.
   function sanitizeName(name) {
     let n = String(name == null ? '' : name);
@@ -289,14 +287,13 @@
     return n || 'decrypted';
   }
 
-  // Yield to the event loop so the UI can paint progress.
+  // Yield to the event loop, so the UI can paint progress.
   function tick() {
     return new Promise((r) => setTimeout(r, 0));
   }
 
-  // Cryptographically strong passphrase generator. Prefers the full BIP-0039
-  // wordlist (2048 words, 11 bits each) loaded from /js/wordlist.js; the small
-  // list below is only a fallback if that file did not load.
+  // The passphrase generator. It prefers the full BIP-0039 wordlist from /js/wordlist.js, 2048
+  // words at 11 bits each; the short list below is only a fallback if that file did not load.
   const WORDLIST = ('copper lantern saffron gravel willow tundra marble ember cipher nimbus ' +
     'quartz fathom cobalt meadow ardent falcon harbor ingot juniper kelp ' +
     'lumen mosaic nectar opal pewter ripple summit thorn umber velvet ' +
@@ -311,7 +308,7 @@
   function generatePassphrase(words) {
     const list = wordSource();
     words = words || 6;
-    // Rejection-sample so the modulo does not bias the word distribution.
+    // Rejection-sample, so the modulo does not bias the word distribution.
     const out = [];
     const limit = Math.floor(0x100000000 / list.length) * list.length;
     const buf = new Uint32Array(1);
@@ -323,7 +320,7 @@
     return out.join('-');
   }
 
-  // ---- Passphrase entropy estimate (for the strength bar) ----
+  // --- the entropy estimate behind the strength bar ---
   const COMMON = ('password passw0rd 123456 12345678 qwerty letmein admin ' +
     'welcome iloveyou abc123 111111 000000 dragon monkey hunter2 login ' +
     'master superman trustno1 starwars').split(' ');
@@ -339,11 +336,10 @@
     return WL_SET;
   }
 
-  // Analyze a passphrase. Returns { bits, exact }. `exact` is true only when we
-  // can stand behind the number: an empty/common passphrase (reliably instant)
-  // or one built entirely from known wordlist words (n * log2(listlen)). For
-  // anything hand-typed we fall back to a rough char-class count and flag it
-  // NOT exact, so the UI can decline to show a misleading crack time.
+  // Analyze a passphrase and return { bits, exact }. `exact` is true only where the number holds
+  // up: an empty or common passphrase, which is reliably instant, or one built entirely from known
+  // wordlist words. Anything hand-typed falls back to a rough character-class count and is flagged
+  // inexact, so the UI can decline to show a misleading crack time.
   function analyze(p) {
     if (!p) return { bits: 0, exact: true };
     const s = p.replace(/^\s+|\s+$/g, '');
@@ -369,8 +365,8 @@
 
   function entropyBits(p) { return analyze(p).bits; }
 
-  // Simple passphrase strength (score 0..4), based on estimated entropy only.
-  // No crack-time claims, no profile dependence: just a rough bar for the UI.
+  // A strength score from 0 to 4, off the estimated entropy alone. No crack-time claim and no
+  // dependence on the profile: just a rough bar for the UI.
   function strength(p) {
     if (!p) return { score: 0, label: 'Empty', bits: 0 };
     const bits = analyze(p).bits;

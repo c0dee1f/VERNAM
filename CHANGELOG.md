@@ -6,6 +6,14 @@ All notable changes to VERNAM are recorded here. Versions are two-part
 The `.vrn` file format has its own version byte (currently `1`) inside each file,
 independent of the tool version below; old files always keep opening.
 
+## 1.2 (2026-09-05)
+
+Links and metadata only. No code, no crypto and no format change, so every existing .vrn file keeps opening.
+
+- Point every PrivacyTools.io link at the bare apex, https://privacytools.io, instead of the www host. This covers the license credit link, the README, CONTRIBUTING, FORMAT.md, the page footer and the brand-kit button.
+- Update the canonical URL, the og:url and the JSON-LD author URL on the standalone page to the same apex.
+- Refresh the engine and UI source comments from upstream.
+
 ## 1.1 (2026-06-18)
 
 Security hardening. No format change, every existing .vrn file keeps opening.

@@ -4,7 +4,7 @@ Thanks for your interest in VERNAM. First, an important boundary note that will 
 
 ## This repository is generated
 
-VERNAM is maintained at [PrivacyTools.io](https://www.privacytools.io), and most of what you see
+VERNAM is maintained at [PrivacyTools.io](https://privacytools.io), and most of what you see
 here is produced automatically from that upstream source. This repo is the published copy that
 VERNAM.app deploys from and that you can fork and self-host. It is not where the code is written.
 
@@ -55,7 +55,7 @@ they affect every existing encrypted file.
 
 You are very welcome to host your own copy. There is no build step and no dependencies to install, it
 is a handful of static files served from any static host. The one condition is the VERNAM License ask:
-keep a visible, working link back to [PrivacyTools.io](https://www.privacytools.io) on any hosted or
+keep a visible, working link back to [PrivacyTools.io](https://privacytools.io) on any hosted or
 distributed copy. See the [README](README.md) and [LICENSE](LICENSE) for the details.
 
 Thank you for helping keep strong, free encryption available to everyone.

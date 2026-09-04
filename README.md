@@ -8,7 +8,7 @@
 **Encrypt any file, right in your browser.**
 Free, open source, and fully client-side. Nothing is ever uploaded.
 
-**[Try it live →](https://www.privacytools.io/encrypt)** · **[VERNAM.app →](https://VERNAM.app)**
+**[Try it live →](https://privacytools.io/encrypt)** · **[VERNAM.app →](https://VERNAM.app)**
 
  ⭐️ **We just launched, and a single star genuinely helps.**
  VERNAM is free and open source, with nothing to sell and no one funding it. If you think strong
@@ -31,7 +31,7 @@ It is named after **Gilbert Vernam**, inventor of the one-time pad, the only cip
 ever mathematically proven unbreakable. VERNAM (the tool) is not a literal one-time
 pad, but it is built on its descendant: XChaCha20, a modern stream cipher.
 
-Made by [PrivacyTools.io](https://www.privacytools.io).
+Made by [PrivacyTools.io](https://privacytools.io).
 
 ## Why it is different
 
@@ -85,13 +85,13 @@ browsers). Firefox and Safari fall back to an in-memory download, capped at 2 Gi
 VERNAM is released under the **[VERNAM License](LICENSE)** (a custom, WTFPL-style
 license, not OSI-approved). Do almost anything you like with it, copy it, change it,
 sell it, ship it, **on one condition: keep a clear, visible, working link back to
-[PrivacyTools.io](https://www.privacytools.io)** on any hosted or distributed copy.
+[PrivacyTools.io](https://privacytools.io)** on any hosted or distributed copy.
 
 Concretely, if you run VERNAM as a website or app, put a real, clickable link to
-`https://www.privacytools.io` somewhere ordinary visitors can see it. A footer line is
+`https://privacytools.io` somewhere ordinary visitors can see it. A footer line is
 plenty, for example:
 
-> Powered by [VERNAM](https://www.privacytools.io/encrypt), from [PrivacyTools.io](https://www.privacytools.io).
+> Powered by [VERNAM](https://privacytools.io/encrypt), from [PrivacyTools.io](https://privacytools.io).
 
 Make the link work, and do not imply that PrivacyTools.io endorses your version. That is
 the entire ask. We would rather you spread this far and wide than lock it down, the
@@ -110,7 +110,7 @@ Writing about VERNAM, or adding that credit link? Grab the logo, the cipher-grid
 and the color palette from the PrivacyTools.io brand kit instead of recreating them by
 hand:
 
-**https://www.privacytools.io/brand#vernam**
+**https://privacytools.io/brand#vernam**
 
 ## What is in here
 
@@ -151,4 +151,4 @@ hand:
 
 ---
 
-Made with care by **[PrivacyTools.io](https://www.privacytools.io)** · fighting surveillance since 2015
+Made with care by **[PrivacyTools.io](https://privacytools.io)** · fighting surveillance since 2015
